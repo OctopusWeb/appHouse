@@ -20,6 +20,9 @@ $CesiumContorller.init = function(){
     	initIcon(center,type,"a"+i)
     }
     addCluster();
+    mui(".closed")[0].addEventListener("tap",function(){
+    	mui("#content")[0].style.display="none";
+    })
 
     // 添加点聚合
     function addCluster(tag) {
@@ -31,17 +34,19 @@ $CesiumContorller.init = function(){
     function initIcon(center,type,id){
     	var clickDom = $CesiumContorller.addIcon(center,type,id);
 	    clickDom.on("click",function(){
-	   		mui(".contentBox")[0].style.display="block";
+	   		mui("#content")[0].style.display="block";
 	   		mui(".info")[0].innerHTML=this.G.name;
-//	   		var bol = this.G.name.substr(0,this.G.name.indexOf("-"));
-//	   		if(bol == "true"){
-//	   			mui(".typeBtn")[0].style.display="block";
-//	   			mui(".typeBtn")[1].style.display="none";
-//	   		}else{
-//	   			mui(".typeBtn")[0].style.display="none";
-//	   			mui(".typeBtn")[1].style.display="block";
-//	   		}
-//	   		
+	   		var bol = this.G.name.substr(0,this.G.name.indexOf("-"));
+	   		if(bol == "true"){
+	   			mui(".typeBtn")[0].style.display="block";
+	   			mui(".typeBtn")[1].style.display="none";
+	   			mui(".contentImg")[0].src = "image/1.jpg"
+	   		}else{
+	   			mui(".contentImg")[0].src = "image/2.jpg"
+	   			mui(".typeBtn")[0].style.display="none";
+	   			mui(".typeBtn")[1].style.display="block";
+	   		}
+	   		
 	    })
     }
    
